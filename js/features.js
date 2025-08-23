@@ -13,7 +13,7 @@ const UserPin = 1111;
 
 // logout features
 logOutBtn.addEventListener("click", () => {
-  window.location.href = "../index.html";
+  window.location.href = "../pages/home.html";
 });
 
 // add Money btn click to open the add money form
