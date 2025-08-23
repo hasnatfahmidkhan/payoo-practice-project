@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home Page</title>
+    <!-- ===== Start: FavIcon ===== -->
+    <link
+      rel="shortcut icon"
+      href="../assets/favicon.ico"
+      type="image/x-icon"
+    />
+    <!-- ===== End: FavIcon ===== -->
+    <!-- ===== Start: Tailwind and DaisyUI CDN ===== -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@5"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- ===== End: Tailwind and DaisyUI CDN ===== -->
+    <!-- ===== Start: FontAwesome CDN ===== -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+      integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- ===== End: FontAwesome CDN ===== -->
+  </head>
+  <body class="bg-[#f4f5f7] min-h-screen">
+    <section class="max-w-md mx-auto bg-white shadow-sm rounded-b-3xl pb-6">
+      <!-- ===== Start: Header Section ===== -->
+      <header
+        class="flex justify-between items-center p-6 border-b border-[#0808081a]"
+      >
+        <div class="flex gap-2 items-center">
+          <img class="h-[50px] w-[50px]" src="../assets/Group.png" alt="" />
+          <div>
+            <h2 class="font-bold">
+              $<span id="available-balance">45000</span>
+            </h2>
+            <p class="text-[#08080880] font-medium text-[14px]">
+              Available Balance
+            </p>
+          </div>
+        </div>
+        <div>
+          <button id="logout-btn" class="btn text-[#08080880] font-semibold">
+            <img src="../assets/logout.svg" alt="" />Log Out
+          </button>
+        </div>
+      </header>
+      <!-- ===== End: Header Section ===== -->
+
+      <!-- ===== Start: Header Content ===== -->
+      <section class="my-6 px-5">
+        <h3 class="text-2xl font-bold">🔥 Welcome to Payooo!</h3>
+        <p class="text-[#08080880] mt-3">
+          Enjoy easy and convenient financial services with us. Cashout charge
+          is low and
+        </p>
+      </section>
+      <!-- ===== End: Header Content ===== -->
+      <!-- ===== Start: All Buttons ===== -->
+      <section class="grid grid-cols-3 gap-4 px-5">
+        <div
+          id="add-money-form-btn"
+          class="border cursor-pointer rounded-2xl border-[#0808081a] flex flex-col items-center justify-center gap-3 py-5 px-3"
+        >
+          <img src="../assets/wallet1.png" alt="" />
+          <h4 class="text-[14px] text-[#080808b3] font-medium">Add Money</h4>
+        </div>
+        <div id="cashout-form-btn"
+          class="border cursor-pointer rounded-2xl border-[#0808081a] flex flex-col items-center justify-center gap-3 py-5 px-3"
+        >
+          <img src="../assets/send1.png" alt="" />
+          <h4 class="text-[14px] text-[#080808b3] font-medium">Cash Out</h4>
+        </div>
+        <div
+          class="border cursor-pointer rounded-2xl border-[#0808081a] flex flex-col items-center justify-center gap-3 py-5 px-3"
+        >
+          <img src="../assets/money1.png" alt="" />
+          <h4 class="text-[14px] text-[#080808b3] font-medium">
+            Transfer Money
+          </h4>
+        </div>
+        <div
+          class="border cursor-pointer rounded-2xl border-[#0808081a] flex flex-col items-center justify-center gap-3 py-5 px-3"
+        >
+          <img src="../assets/bonus1.png" alt="" />
+          <h4 class="text-[14px] text-[#080808b3] font-medium">Get Bonus</h4>
+        </div>
+        <div
+          class="border cursor-pointer rounded-2xl border-[#0808081a] flex flex-col items-center justify-center gap-3 py-5 px-3"
+        >
+          <img src="../assets/purse1.png" alt="" />
+          <h4 class="text-[14px] text-[#080808b3] font-medium">Pay Bill</h4>
+        </div>
+        <div
+          class="border cursor-pointer rounded-2xl border-[#0808081a] flex flex-col items-center justify-center gap-3 py-5 px-3"
+        >
+          <img src="../assets/transaction1.png" alt="" />
+          <h4 class="text-[14px] text-[#080808b3] font-medium">Transactions</h4>
+        </div>
+      </section>
+      <!-- ===== End: All Buttons ===== -->
+    </section>
+    <!-- ===== Start: All Forms Section ===== -->
+    <main class="max-w-md mx-auto px-5 mt-6">
+      <!-- ===== Start: Add Money Form ===== -->
+      <section id="add-money-container" class="hidden">
+        <h2 class="font-bold mb-4 text-[18px]">Add Money</h2>
+        <section class="bg-[#ffffff] rounded-3xl p-8">
+          <form id="add-money-form">
+            <!-- Select Bank  -->
+            <div class="input-group flex flex-col mb-4">
+              <label class="font-semibold text-[#080808] mb-3" for="select-bank"
+                >Select A Bank</label
+              >
+              <select
+                id="select-banks"
+                class="select w-full rounded-3xl text-[#080808] bg-[#F4F5F7] border-none focus:outline focus:outline-[#535353]"
+              >
+                <option value="" disabled selected>Select Bank</option>
+                <option value="AB Bank">AB Bank</option>
+                <option value="IFIC Bank">IFIC Bank</option>
+                <option value="Islami Bank">Islami Bank</option>
+              </select>
+              <small
+                id="not-select-bank"
+                class="hidden text-red-600 font-medium"
+              ></small>
+            </div>
+
+            <!-- Bank Account Number  -->
+            <div class="input-group flex flex-col mb-4">
+              <label
+                class="font-semibold text-[#080808] mb-3"
+                for="bank-account-number"
+                >Bank Account Number</label
+              >
+
+              <input autocomplete="off"
+                minlength="16"
+                maxlength="16"
+                type="text"
+                placeholder="Bank Account Number"
+                class="input w-full rounded-3xl text-[#080808] bg-[#F4F5F7] border-none focus:outline focus:outline-[#535353]"
+                id="bank-account-number"
+              />
+              <small
+                id="account-num"
+                class="hidden text-red-600 font-medium"
+              ></small>
+            </div>
+            <!-- Add Amount  -->
+            <div class="input-group flex flex-col mb-4">
+              <label class="font-semibold text-[#080808] mb-3"
+                >Amount To Add</label
+              >
+
+              <input
+                autocomplete="off"
+                type="text"
+                placeholder="Add Amount to withdraw"
+                class="input w-full rounded-3xl text-[#080808] bg-[#F4F5F7] border-none focus:outline focus:outline-[#535353]"
+                id="add-amount"
+              />
+              <small
+                id="amount-not-add"
+                class="hidden text-red-600 font-medium"
+              ></small>
+            </div>
+            <!-- 4 Digit PIn  -->
+            <div class="input-group flex flex-col mb-4">
+              <label class="font-semibold text-[#080808] mb-3" for="pin-number"
+                >4 Digit Pin</label
+              >
+
+              <input autocomplete="off"
+                type="text"
+                minlength="4"
+                maxlength="4"
+                placeholder="Enter 4 Digit Pin"
+                class="input w-full rounded-3xl text-[#080808] bg-[#F4F5F7] border-none focus:outline focus:outline-[#535353]"
+                id="pin-number"
+              />
+              <small
+                id="wrong-pin"
+                class="hidden text-red-600 font-medium"
+              ></small>
+            </div>
+            <button
+              id="add-money-btn"
+              class="btn btn-active btn-primary w-full rounded-3xl text-white bg-[#0874f2] border-none"
+            >
+              Add Money
+            </button>
+          </form>
+        </section>
+      </section>
+      <!-- ===== End: Add Money Form ===== -->
+      <!-- ===== Start: Cash Out Form ===== -->
+      <section id="cashout-container" class="hidden">
+        <h2 class="font-bold mb-4 text-[18px]">Cash Out</h2>
+        <section class="bg-[#ffffff] rounded-3xl p-8">
+          <form id="cashout-form">
+            <!-- Agent Number  -->
+            <div class="input-group flex flex-col mb-4">
+              <label
+                class="font-semibold text-[#080808] mb-3"
+                for="agent-number"
+                >Agent Number</label
+              >
+
+              <input autocomplete="off"
+                minlength="11"
+                maxlength="11"
+                type="text"
+                placeholder="Enter 11 digit number"
+                class="input w-full rounded-3xl text-[#080808] bg-[#F4F5F7] border-none focus:outline focus:outline-[#535353]"
+                id="agent-number" 
+              />
+              <small
+                id="agent-wrong-num"
+                class="hidden text-red-600 font-medium"
+              ></small>
+            </div>
+            <!-- Cash Out Amount  -->
+            <div class="input-group flex flex-col mb-4">
+              <label class="font-semibold text-[#080808] mb-3"
+                >Amount</label
+              >
+
+              <input
+                autocomplete="off"
+                type="text"
+                placeholder="Enter Amount to withdraw"
+                class="input w-full rounded-3xl text-[#080808] bg-[#F4F5F7] border-none focus:outline focus:outline-[#535353]"
+                id="withdraw-ammount"
+              />
+              <small
+                id="not-add-withdraw"
+                class="hidden text-red-600 font-medium"
+              ></small>
+            </div>
+            <!-- 4 Digit PIn  -->
+            <div class="input-group flex flex-col mb-4">
+              <label class="font-semibold text-[#080808] mb-3" for="pin-number"
+                >4 Digit Pin</label
+              >
+
+              <input autocomplete="off"
+                type="text"
+                minlength="4"
+                maxlength="4"
+                placeholder="Enter 4 Digit Pin"
+                class="input w-full rounded-3xl text-[#080808] bg-[#F4F5F7] border-none focus:outline focus:outline-[#535353]"
+                id="cashout-pin"
+              />
+              <small
+                id="wrong-pin-cashout"
+                class="hidden text-red-600 font-medium"
+              ></small>
+            </div>
+            <button
+              id="withdraw-money-btn"
+              class="btn btn-active btn-primary w-full rounded-3xl text-white bg-[#0874f2] border-none"
+            >
+              Withdraw Money
+            </button>
+          </form>
+        </section>
+      </section>
+      <!-- ===== End: Cash Out Form ===== -->
+    </main>
+    <!-- ===== End: All Forms Section ===== -->
+    <script src="./features.js"></script>
+  </body>
+</html>
