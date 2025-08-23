@@ -17,8 +17,8 @@ loginBtn.addEventListener("click", (evt) => {
   const convertedMobileNum = Number(mobileNum.value);
   const convertedPinNum = Number(pinNum.value);
   if (convertedMobileNum === userAccountNum && convertedPinNum === userPin) {
-    // window.open( "../pages/home.html", "_blank");
-    window.location.href = "payoo-practice-project/pages/home.html";
+    window.open( "../pages/home.html", "_blank");
+    // window.location.href = "";
     document.querySelector("form").reset();
   }
 
