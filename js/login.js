@@ -18,7 +18,7 @@ loginBtn.addEventListener("click", (evt) => {
   const convertedPinNum = Number(pinNum.value);
   if (convertedMobileNum === userAccountNum && convertedPinNum === userPin) {
     // window.open( "../pages/home.html", "_blank");
-    window.location.href = "home.html";
+    window.location.href = "../pages/home.html";
     document.querySelector("form").reset();
   }
 
