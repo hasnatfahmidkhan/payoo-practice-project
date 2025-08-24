@@ -403,13 +403,37 @@
       <section id="pay-bill-container" class="forms-btn hidden">
         <h2 class="font-bold mb-4 text-[18px]">Pay Bill</h2>
         <section class="bg-[#ffffff] rounded-3xl p-8">
-          <form id="transfer-amount-form">
-            <!-- User Account Number  -->
+          <form id="pay-bill-form">
+            <!-- Select to Pay  -->
+            <div class="input-group flex flex-col mb-4">
+              <label class="font-semibold text-[#080808] mb-3" for="select-pay-bills"
+                >Select To Pay</label
+              >
+              <select
+                id="select-pay-bills"
+                class="select w-full rounded-3xl text-[#08080880] bg-[#F4F5F7] border-none focus:outline focus:outline-[#535353]"
+              >
+                <option value="" disabled selected>Select Bills</option>
+                <option class="text-[#080808]" value="electricity">Electricity Bill</option>
+                <option class="text-[#080808]" value="internet">
+                  Internet Bill
+                </option>
+                <option class="text-[#080808]" value="gas">
+                  Gas Bill
+                </option>
+              </select>
+              <small
+                id="not-select-bill"
+                class="hidden text-red-600 font-medium"
+              ></small>
+            </div>
+
+            <!-- Biller Account Number  -->
             <div class="input-group flex flex-col mb-4">
               <label
                 class="font-semibold text-[#080808] mb-3"
                 for="user-account-number"
-                >User Account Number</label
+                >Biller Account Number</label
               >
 
               <input
@@ -417,31 +441,33 @@
                 minlength="11"
                 maxlength="11"
                 type="text"
-                placeholder="Enter 11 digit number"
+                placeholder="Enter account number"
                 class="input w-full rounded-3xl text-[#080808] bg-[#F4F5F7] border-none focus:outline focus:outline-[#535353]"
-                id="user-account-number"
+                id="bill-account-number"
               />
               <small
-                id="user-wrong-num"
+                id="bill-wrong-num"
                 class="hidden text-red-600 font-medium"
               ></small>
             </div>
-            <!-- Transfer Amount  -->
+
+            <!-- Amount to Pay  -->
             <div class="input-group flex flex-col mb-4">
-              <label class="font-semibold text-[#080808] mb-3">Amount</label>
+              <label class="font-semibold text-[#080808] mb-3">Amount to Pay</label>
 
               <input
                 autocomplete="off"
                 type="text"
-                placeholder="Enter Amount to Transfer"
+                placeholder="Add amount to pay"
                 class="input w-full rounded-3xl text-[#080808] bg-[#F4F5F7] border-none focus:outline focus:outline-[#535353]"
-                id="transfer-ammount"
+                id="pay-ammount"
               />
               <small
-                id="not-add-transfer"
+                id="not-add-pay"
                 class="hidden text-red-600 font-medium"
               ></small>
             </div>
+
             <!-- 4 Digit PIn  -->
             <div class="input-group flex flex-col mb-4">
               <label class="font-semibold text-[#080808] mb-3" for="pin-number"
@@ -453,20 +479,20 @@
                 type="text"
                 minlength="4"
                 maxlength="4"
-                placeholder="Enter 4 Digit Pin"
+                placeholder="Enter 4 Digit Pin Number"
                 class="input w-full rounded-3xl text-[#080808] bg-[#F4F5F7] border-none focus:outline focus:outline-[#535353]"
-                id="transfer-pin"
+                id="pay-pin"
               />
               <small
-                id="wrong-pin-transfer"
+                id="wrong-pin-pay"
                 class="hidden text-red-600 font-medium"
               ></small>
             </div>
             <button
-              id="transfer-money-btn"
+              id="pay-money-btn"
               class="btn btn-active btn-primary w-full rounded-3xl text-white bg-[#0874f2] border-none"
             >
-              Send Now
+              Pay Now
             </button>
           </form>
         </section>

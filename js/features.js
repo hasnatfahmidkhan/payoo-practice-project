@@ -223,7 +223,7 @@ document
       return;
     }
 
-    // check cash out balance is less than avialable balance or not
+    // check transfer balance is less than avialable balance or not
     if (transferAmount > Number(availableBanlace.textContent)) {
       document.querySelector("#not-add-transfer").textContent =
         "Not Available Money";
@@ -240,3 +240,67 @@ document
     document.querySelector("#transfer-amount-form").reset();
     alert("Transfer Successfully!");
   });
+
+//* Pay Bill Features *//
+document.querySelector("#pay-money-btn").addEventListener("click", (evt) => {
+  evt.preventDefault(); // stop reload after add money btn click
+
+  // Every click time empty the input field value
+  const billSelected = getElement("not-select-bill");
+  billSelected.textContent = "";
+  const billNumWrong = getElement("bill-wrong-num");
+  billNumWrong.textContent = "";
+  const amountNotAdd = getElement("not-add-pay");
+  amountNotAdd.textContent = "";
+  const wrongPin = getElement("wrong-pin-pay");
+  wrongPin.textContent = "";
+
+  // Select to Pay
+  const selectBills = getInputValue("select-pay-bills");
+  if (selectBills === "") {
+    billSelected.textContent = "Please Select A Bank";
+    billSelected.style.display = "initial";
+    return;
+  }
+
+  // Valid Account Number
+  const billNumber = getInputValue("bill-account-number");
+  const isValidNumber = validNumber(billNumber);
+  if (!isValidNumber) {
+    billNumWrong.textContent = "Invalid agent number";
+    billNumWrong.style.display = "initial";
+    return;
+  }
+
+  // Ammount
+  const payAmount = Number(getInputValue("pay-ammount"));
+  if (payAmount <= 0) {
+    amountNotAdd.textContent = "Enter amount to pay";
+    amountNotAdd.style.display = "initial";
+    return;
+  }
+
+  // check pin
+  const pinNumber = Number(getInputValue("pay-pin"));
+  if (pinNumber !== UserPin) {
+    wrongPin.textContent = "Wrong Password!";
+    wrongPin.style.display = "initial";
+    return;
+  }
+
+  // check pay bill balance is less than avialable balance or not
+  if (payAmount > Number(availableBanlace.textContent)) {
+    amountNotAdd.textContent = "Not Available Money";
+    amountNotAdd.style.display = "initial";
+    return;
+  }
+
+  // after all valid submit add money
+  // New Available Balance
+  const newAvailableBalance = Number(availableBanlace.textContent) - payAmount;
+  availableBanlace.textContent = newAvailableBalance;
+
+  // reset the form
+  document.querySelector("#pay-bill-form").reset();
+  alert("Payment Successfull!");
+});
