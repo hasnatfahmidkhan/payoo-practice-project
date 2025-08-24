@@ -4,6 +4,12 @@ const addMoneyForm = document.querySelector("#add-money-container");
 const addMoneyFormBtn = document.querySelector("#add-money-form-btn");
 const cashOutFormBtn = document.querySelector("#cashout-form-btn");
 const cashOutForm = document.querySelector("#cashout-container");
+const transferForm = document.querySelector("#transfer-container");
+const transferFormBtn = document.querySelector("#transfer-form-btn");
+const bonusForm = document.querySelector("#bonus-container");
+const bonusFormBtn = document.querySelector("#get-bonus-btn");
+const payBillForm = document.querySelector("#pay-bill-container");
+const payBillFormBtn = document.querySelector("#pay-bill-btn");
 const logOutBtn = document.querySelector("#logout-btn");
 const UserPin = 1111;
 
@@ -27,9 +33,43 @@ function validNumber(num) {
   }
 }
 
+// Function For Toggle Features
+function hundleToggle(id) {
+  const forms = document.querySelectorAll(".forms-btn");
+  forms.forEach((form) => {
+    form.style.display = "none";
+  });
+  id.style.display = "initial";
+}
+
 // logout features
 logOutBtn.addEventListener("click", () => {
   window.location.href = "../index.html";
+});
+
+// Add Money toogle Features
+addMoneyFormBtn.addEventListener("click", () => {
+  hundleToggle(addMoneyForm);
+});
+
+// cash out toggle Features
+cashOutFormBtn.addEventListener("click", () => {
+  hundleToggle(cashOutForm);
+});
+
+// transfer toggle Features
+transferFormBtn.addEventListener("click", () => {
+  hundleToggle(transferForm);
+});
+
+// Get Bonus toggle Features
+bonusFormBtn.addEventListener("click", () => {
+  hundleToggle(bonusForm);
+});
+
+// Pay Bill toggle Features
+payBillFormBtn.addEventListener("click", () => {
+  hundleToggle(payBillForm);
 });
 
 //* Add Money Features *//
@@ -88,12 +128,6 @@ addMoneyBtn.addEventListener("click", (evt) => {
   alert("Add Amount Successfully");
 });
 
-// Add Money toogle Features
-addMoneyFormBtn.addEventListener("click", () => {
-  addMoneyForm.style.display = "initial";
-  cashOutForm.style.display = "none";
-});
-
 //* Cash Out Features *//
 document
   .querySelector("#withdraw-money-btn")
@@ -139,7 +173,7 @@ document
       document.querySelector("#not-add-withdraw").style.display = "initial";
       return;
     }
-    // New Available Balance 
+    // New Available Balance
     const newAvailableBalance =
       Number(availableBanlace.textContent) - cashOutAmount;
     availableBanlace.textContent = newAvailableBalance;
@@ -148,8 +182,3 @@ document
     document.querySelector("#cashout-form").reset();
     alert("Cash Out Successfully");
   });
-// cash out btn click to open the cash out form
-cashOutFormBtn.addEventListener("click", () => {
-  cashOutForm.style.display = "initial";
-  addMoneyForm.style.display = "none";
-});
