@@ -182,3 +182,61 @@ document
     document.querySelector("#cashout-form").reset();
     alert("Cash Out Successfully");
   });
+
+//* Transfer Balance Features *//
+document
+  .querySelector("#transfer-money-btn")
+  .addEventListener("click", (evt) => {
+    evt.preventDefault(); // stop reload after add money btn click
+
+    document.querySelector("#user-wrong-num").textContent = "";
+    document.querySelector("#not-add-transfer").textContent = "";
+    document.querySelector("#wrong-pin-transfer").textContent = "";
+
+    // Valid Account Number
+    const userNumber = getInputValue("user-account-number");
+
+    const isValidNumber = validNumber(userNumber);
+
+    if (!isValidNumber) {
+      document.querySelector("#user-wrong-num").textContent =
+        "Invalid user number";
+      document.querySelector("#user-wrong-num").style.display = "initial";
+      return;
+    }
+
+    // Ammount
+    const transferAmount = Number(getInputValue("transfer-ammount"));
+
+    if (transferAmount < 50) {
+      document.querySelector("#not-add-transfer").textContent = "Minimum 50 Tk";
+      document.querySelector("#not-add-transfer").style.display = "initial";
+      return;
+    }
+
+    // check pin
+    const pinNumber = Number(getInputValue("transfer-pin"));
+    if (pinNumber !== UserPin) {
+      document.querySelector("#wrong-pin-transfer").textContent =
+        "Wrong Password!";
+      document.querySelector("#wrong-pin-transfer").style.display = "initial";
+      return;
+    }
+
+    // check cash out balance is less than avialable balance or not
+    if (transferAmount > Number(availableBanlace.textContent)) {
+      document.querySelector("#not-add-transfer").textContent =
+        "Not Available Money";
+      document.querySelector("#not-add-transfer").style.display = "initial";
+      return;
+    }
+    // after all valid submit add money
+    // New Available Balance
+    const newAvailableBalance =
+      Number(availableBanlace.textContent) - transferAmount;
+    availableBanlace.textContent = newAvailableBalance;
+
+    // reset the form
+    document.querySelector("#transfer-amount-form").reset();
+    alert("Transfer Successfully!");
+  });

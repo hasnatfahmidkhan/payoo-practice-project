@@ -212,7 +212,7 @@
         </section>
       </section>
       <!-- ===== End: Add Money Form ===== -->
-       
+
       <!-- ===== Start: Cash Out Form ===== -->
       <section id="cashout-container" class="forms-btn hidden">
         <h2 class="font-bold mb-4 text-[18px]">Cash Out</h2>
@@ -365,7 +365,7 @@
       <section id="bonus-container" class="forms-btn hidden">
         <h2 class="font-bold mb-4 text-[18px]">Get Bonus</h2>
         <section class="bg-[#ffffff] rounded-3xl p-8">
-          <form id="transfer-amount-form">
+          <form id="bonus-form">
             <!-- User Account Number  -->
             <div class="input-group flex flex-col mb-4">
               <label
@@ -388,47 +388,11 @@
                 class="hidden text-red-600 font-medium"
               ></small>
             </div>
-            <!-- Transfer Amount  -->
-            <div class="input-group flex flex-col mb-4">
-              <label class="font-semibold text-[#080808] mb-3">Amount</label>
-
-              <input
-                autocomplete="off"
-                type="text"
-                placeholder="Enter Amount to Transfer"
-                class="input w-full rounded-3xl text-[#080808] bg-[#F4F5F7] border-none focus:outline focus:outline-[#535353]"
-                id="transfer-ammount"
-              />
-              <small
-                id="not-add-transfer"
-                class="hidden text-red-600 font-medium"
-              ></small>
-            </div>
-            <!-- 4 Digit PIn  -->
-            <div class="input-group flex flex-col mb-4">
-              <label class="font-semibold text-[#080808] mb-3" for="pin-number"
-                >Pin Number</label
-              >
-
-              <input
-                autocomplete="off"
-                type="text"
-                minlength="4"
-                maxlength="4"
-                placeholder="Enter 4 Digit Pin"
-                class="input w-full rounded-3xl text-[#080808] bg-[#F4F5F7] border-none focus:outline focus:outline-[#535353]"
-                id="transfer-pin"
-              />
-              <small
-                id="wrong-pin-transfer"
-                class="hidden text-red-600 font-medium"
-              ></small>
-            </div>
             <button
               id="transfer-money-btn"
               class="btn btn-active btn-primary w-full rounded-3xl text-white bg-[#0874f2] border-none"
             >
-              Send Now
+              Get Bonus
             </button>
           </form>
         </section>
@@ -508,7 +472,6 @@
         </section>
       </section>
       <!-- ===== End: Pay Bill Form ===== -->
-
     </main>
     <!-- ===== End: All Forms Section ===== -->
     <script src="../js/features.js"></script>
