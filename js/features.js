@@ -1,4 +1,3 @@
-const addMoneyBtn = document.querySelector("#add-money-btn");
 const availableBanlace = document.querySelector("#available-balance");
 const addMoneyForm = document.querySelector("#add-money-container");
 const addMoneyFormBtn = document.querySelector("#add-money-form-btn");
@@ -73,7 +72,7 @@ payBillFormBtn.addEventListener("click", () => {
 });
 
 //* Add Money Features *//
-addMoneyBtn.addEventListener("click", (evt) => {
+document.querySelector("#add-money-btn").addEventListener("click", (evt) => {
   evt.preventDefault(); // stop reload after add money btn click
   // Every click time empty the input field value
   const accountNotSelected = getElement("not-select-bank");
@@ -134,14 +133,13 @@ document
   .addEventListener("click", (evt) => {
     evt.preventDefault(); // stop reload after add money btn click
 
-    const agentNumber = getInputValue("agent-number");
-    const withdrawAmount = getInputValue("withdraw-ammount");
-    const pin = getInputValue("cashout-pin");
     document.querySelector("#agent-wrong-num").textContent = "";
     document.querySelector("#not-add-withdraw").textContent = "";
     document.querySelector("#wrong-pin-cashout").textContent = "";
-    const isValidNumber = validNumber(agentNumber);
+
     // Valid Account Number
+    const agentNumber = getInputValue("agent-number");
+    const isValidNumber = validNumber(agentNumber);
     if (!isValidNumber) {
       document.querySelector("#agent-wrong-num").textContent =
         "Invalid agent number";
@@ -150,29 +148,31 @@ document
     }
 
     // Ammount
-    if (Number(withdrawAmount.value) < 50) {
+    const cashOutAmount = Number(getInputValue("withdraw-ammount"));
+
+    if (cashOutAmount < 50) {
       document.querySelector("#not-add-withdraw").textContent = "Minimum 50 Tk";
       document.querySelector("#not-add-withdraw").style.display = "initial";
       return;
     }
 
     // check pin
-    if (Number(pin.value) !== UserPin) {
+    const pinNumber = Number(getInputValue("cashout-pin"));
+    if (pinNumber !== UserPin) {
       document.querySelector("#wrong-pin-cashout").textContent =
         "Wrong Password!";
       document.querySelector("#wrong-pin-cashout").style.display = "initial";
       return;
     }
 
-    // after all valid submit add money
-    const cashOutAmount = Number(withdrawAmount.value);
-    // check cash out is posibble or not
+    // check cash out balance is less than avialable balance or not
     if (cashOutAmount > Number(availableBanlace.textContent)) {
       document.querySelector("#not-add-withdraw").textContent =
         "Not Available Money";
       document.querySelector("#not-add-withdraw").style.display = "initial";
       return;
     }
+    // after all valid submit add money
     // New Available Balance
     const newAvailableBalance =
       Number(availableBanlace.textContent) - cashOutAmount;
