@@ -103,6 +103,7 @@
           <h4 class="text-[14px] text-[#080808b3] font-medium">Pay Bill</h4>
         </div>
         <div
+          id="transaction-btn"
           class="border cursor-pointer rounded-2xl text-center border-[#0808081a] flex flex-col items-center justify-center gap-3 py-5 px-3"
         >
           <img src="../assets/transaction1.png" alt="" />
@@ -112,7 +113,7 @@
       <!-- ===== End: All Buttons ===== -->
     </section>
     <!-- ===== Start: All Forms Section ===== -->
-    <main class="max-w-md mx-auto px-5 mt-6">
+    <main class="max-w-md mx-auto px-5 mt-6 pb-4">
       <!-- ===== Start: Add Money Form ===== -->
       <section id="add-money-container" class="forms-btn hidden">
         <h2 class="font-bold mb-4 text-[18px]">Add Money</h2>
@@ -366,30 +367,30 @@
         <h2 class="font-bold mb-4 text-[18px]">Get Bonus</h2>
         <section class="bg-[#ffffff] rounded-3xl p-8">
           <form id="bonus-form">
-            <!-- User Account Number  -->
+            <!-- Enter Coupon Number  -->
             <div class="input-group flex flex-col mb-4">
               <label
                 class="font-semibold text-[#080808] mb-3"
                 for="user-account-number"
-                >User Account Number</label
+                >Enter Bonus Coupon</label
               >
 
               <input
                 autocomplete="off"
-                minlength="11"
-                maxlength="11"
+                minlength="6"
+                maxlength="6"
                 type="text"
-                placeholder="Enter 11 digit number"
+                placeholder="Enter You Coupon"
                 class="input w-full rounded-3xl text-[#080808] bg-[#F4F5F7] border-none focus:outline focus:outline-[#535353]"
-                id="user-account-number"
+                id="coupon-number"
               />
               <small
-                id="user-wrong-num"
+                id="coupon-wrong-num"
                 class="hidden text-red-600 font-medium"
               ></small>
             </div>
             <button
-              id="transfer-money-btn"
+              id="bonus-btn"
               class="btn btn-active btn-primary w-full rounded-3xl text-white bg-[#0874f2] border-none"
             >
               Get Bonus
@@ -406,7 +407,9 @@
           <form id="pay-bill-form">
             <!-- Select to Pay  -->
             <div class="input-group flex flex-col mb-4">
-              <label class="font-semibold text-[#080808] mb-3" for="select-pay-bills"
+              <label
+                class="font-semibold text-[#080808] mb-3"
+                for="select-pay-bills"
                 >Select To Pay</label
               >
               <select
@@ -414,13 +417,13 @@
                 class="select w-full rounded-3xl text-[#08080880] bg-[#F4F5F7] border-none focus:outline focus:outline-[#535353]"
               >
                 <option value="" disabled selected>Select Bills</option>
-                <option class="text-[#080808]" value="electricity">Electricity Bill</option>
+                <option class="text-[#080808]" value="electricity">
+                  Electricity Bill
+                </option>
                 <option class="text-[#080808]" value="internet">
                   Internet Bill
                 </option>
-                <option class="text-[#080808]" value="gas">
-                  Gas Bill
-                </option>
+                <option class="text-[#080808]" value="gas">Gas Bill</option>
               </select>
               <small
                 id="not-select-bill"
@@ -453,7 +456,9 @@
 
             <!-- Amount to Pay  -->
             <div class="input-group flex flex-col mb-4">
-              <label class="font-semibold text-[#080808] mb-3">Amount to Pay</label>
+              <label class="font-semibold text-[#080808] mb-3"
+                >Amount to Pay</label
+              >
 
               <input
                 autocomplete="off"
@@ -498,6 +503,125 @@
         </section>
       </section>
       <!-- ===== End: Pay Bill Form ===== -->
+
+      <!-- ===== Start: Transaction Form ===== -->
+      <section id="transactions-container" class="forms-btn hidden">
+        <!-- heading  -->
+        <div class="flex justify-between items-center mb-4">
+          <h2 class="font-bold mb-4 text-[18px]">Transactions History</h2>
+          <p class="text-[#08080880] font-medium">View All</p>
+        </div>
+
+        <!-- All Transactions Card  -->
+        <section class="grid grid-cols-1 gap-4 ">
+          <!-- card 1 -->
+          <div
+            class="bg-white px-4 py-3 cursor-pointer border border-[#0808081e] rounded-xl flex justify-between items-center"
+          >
+            <div class="flex items-center gap-4">
+              <div
+                class="bg-[#f4f5f7] p-3 inline-flex items-center justify-center rounded-full"
+              >
+                <img src="../assets/wallet1.png" alt="wallet" />
+              </div>
+              <div class="flex flex-col justify-center">
+                <h3 class="font-semibold text-[18px]">Electricity Bill</h3>
+                <small class="text-[14px] font-medium text-[#08080880]"
+                  >Today <span>01.44</span> Am</small
+                >
+              </div>
+            </div>
+            <div>
+              <i class="fa-solid fa-ellipsis-vertical text-2xl"></i>
+            </div>
+          </div>
+          <!-- card 2 -->
+          <div
+            class="bg-white px-4 py-3 cursor-pointer border border-[#0808081e] rounded-xl flex justify-between items-center"
+          >
+            <div class="flex items-center gap-4">
+              <div
+                class="bg-[#f4f5f7] p-3 inline-flex items-center justify-center rounded-full"
+              >
+                <img src="../assets/wallet1.png" alt="wallet" />
+              </div>
+              <div class="flex flex-col justify-center">
+                <h3 class="font-semibold text-[18px]">Electricity Bill</h3>
+                <small class="text-[14px] font-medium text-[#08080880]"
+                  >Today <span>01.44</span> Am</small
+                >
+              </div>
+            </div>
+            <div>
+              <i class="fa-solid fa-ellipsis-vertical text-2xl"></i>
+            </div>
+          </div>
+          <!-- card 3 -->
+          <div
+            class="bg-white px-4 py-3 cursor-pointer border border-[#0808081e] rounded-xl flex justify-between items-center"
+          >
+            <div class="flex items-center gap-4">
+              <div
+                class="bg-[#f4f5f7] p-3 inline-flex items-center justify-center rounded-full"
+              >
+                <img src="../assets/wallet1.png" alt="wallet" />
+              </div>
+              <div class="flex flex-col justify-center">
+                <h3 class="font-semibold text-[18px]">Electricity Bill</h3>
+                <small class="text-[14px] font-medium text-[#08080880]"
+                  >Today <span>01.44</span> Am</small
+                >
+              </div>
+            </div>
+            <div>
+              <i class="fa-solid fa-ellipsis-vertical text-2xl"></i>
+            </div>
+          </div>
+          <!-- card 4 -->
+          <div
+            class="bg-white px-4 py-3 cursor-pointer border border-[#0808081e] rounded-xl flex justify-between items-center"
+          >
+            <div class="flex items-center gap-4">
+              <div
+                class="bg-[#f4f5f7] p-3 inline-flex items-center justify-center rounded-full"
+              >
+                <img src="../assets/wallet1.png" alt="wallet" />
+              </div>
+              <div class="flex flex-col justify-center">
+                <h3 class="font-semibold text-[18px]">Electricity Bill</h3>
+                <small class="text-[14px] font-medium text-[#08080880]"
+                  >Today <span>01.44</span> Am</small
+                >
+              </div>
+            </div>
+            <div>
+              <i class="fa-solid fa-ellipsis-vertical text-2xl"></i>
+            </div>
+          </div>
+          <!-- card 5 -->
+          <div
+            class="bg-white px-4 py-3 cursor-pointer border border-[#0808081e] rounded-xl flex justify-between items-center"
+          >
+            <div class="flex items-center gap-4">
+              <div
+                class="bg-[#f4f5f7] p-3 inline-flex items-center justify-center rounded-full"
+              >
+                <img src="../assets/wallet1.png" alt="wallet" />
+              </div>
+              <div class="flex flex-col justify-center">
+                <h3 class="font-semibold text-[18px]">Electricity Bill</h3>
+                <small class="text-[14px] font-medium text-[#08080880]"
+                  >Today <span>01.44</span> Am</small
+                >
+              </div>
+            </div>
+            <div>
+              <i class="fa-solid fa-ellipsis-vertical text-2xl"></i>
+            </div>
+          </div>
+        </section>
+      </section>
+      <!-- ===== End: Transaction Form ===== -->
     </main>
     <!-- ===== End: All Forms Section ===== -->
     <script src="../js/features.js"></script>

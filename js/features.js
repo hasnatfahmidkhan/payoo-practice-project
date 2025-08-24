@@ -9,6 +9,8 @@ const bonusForm = document.querySelector("#bonus-container");
 const bonusFormBtn = document.querySelector("#get-bonus-btn");
 const payBillForm = document.querySelector("#pay-bill-container");
 const payBillFormBtn = document.querySelector("#pay-bill-btn");
+const transactionsContainer = document.querySelector("#transactions-container");
+const transactionbtn = document.querySelector("#transaction-btn");
 const logOutBtn = document.querySelector("#logout-btn");
 const UserPin = 1111;
 
@@ -41,6 +43,11 @@ function hundleToggle(id) {
   id.style.display = "initial";
 }
 
+// Function for get coupon Bonus
+function getbonus(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 // logout features
 logOutBtn.addEventListener("click", () => {
   window.location.href = "../index.html";
@@ -69,6 +76,11 @@ bonusFormBtn.addEventListener("click", () => {
 // Pay Bill toggle Features
 payBillFormBtn.addEventListener("click", () => {
   hundleToggle(payBillForm);
+});
+
+// Transactions toggle Features
+transactionbtn.addEventListener("click", () => {
+  hundleToggle(transactionsContainer);
 });
 
 //* Add Money Features *//
@@ -240,6 +252,32 @@ document
     document.querySelector("#transfer-amount-form").reset();
     alert("Transfer Successfully!");
   });
+
+//* Get Bonus Features *//
+document.querySelector("#bonus-btn").addEventListener("click", (evt) => {
+  evt.preventDefault(); // stop reload after add money btn click
+
+  document.querySelector("#coupon-wrong-num").textContent = "";
+
+  // Valid Account Number
+  const couponNum = getInputValue("coupon-number");
+
+  if (couponNum.length < 6) {
+    document.querySelector("#coupon-wrong-num").textContent =
+      "Invalid coupon number";
+    document.querySelector("#coupon-wrong-num").style.display = "initial";
+    return;
+  }
+
+  // New Available Balance
+  const bonusMoney = getbonus(300, 1000);
+  const newAvailableBalance = Number(availableBanlace.textContent) + bonusMoney;
+  availableBanlace.textContent = newAvailableBalance;
+
+  // reset the form
+  document.querySelector("#bonus-form").reset();
+  alert("Add Bonus Successfully!");
+});
 
 //* Pay Bill Features *//
 document.querySelector("#pay-money-btn").addEventListener("click", (evt) => {
