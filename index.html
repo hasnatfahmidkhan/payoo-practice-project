@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Payoo Login Page</title>
     <!-- ===== Start: FavIcon ===== -->
-    <link rel="shortcut icon" href="./assets/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="./assets/favicon.ico" type="image/x-icon" />
     <!-- ===== End: FavIcon ===== -->
     <!-- ===== Start: Tailwind and DaisyUI CDN ===== -->
     <link
@@ -31,7 +31,10 @@
             >Mobile Number</label
           >
 
-          <input  minlength="11"maxlength="11"
+          <input
+            autocomplete="off"
+            minlength="11"
+            maxlength="11"
             type="text"
             placeholder="Enter Your Number"
             class="input rounded-3xl text-[#080808] bg-[#F4F5F7] border-none focus:outline focus:outline-[#535353]"
@@ -45,6 +48,7 @@
           >
 
           <input
+            autocomplete="off"
             type="text"
             minlength="4"
             maxlength="4"

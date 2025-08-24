@@ -111,7 +111,7 @@
     <!-- ===== Start: All Forms Section ===== -->
     <main class="max-w-md mx-auto px-5 mt-6">
       <!-- ===== Start: Add Money Form ===== -->
-      <section id="add-money-container" class="">
+      <section id="add-money-container" class="hidden">
         <h2 class="font-bold mb-4 text-[18px]">Add Money</h2>
         <section class="bg-[#ffffff] rounded-3xl p-8">
           <form id="add-money-form">
@@ -124,10 +124,14 @@
                 id="select-banks"
                 class="select w-full rounded-3xl text-[#08080880] bg-[#F4F5F7] border-none focus:outline focus:outline-[#535353]"
               >
-                <option  value="" disabled selected>Select Bank</option>
-                <option class="text-[#080808] " value="AB Bank">AB Bank</option>
-                <option class="text-[#080808] " value="IFIC Bank">IFIC Bank</option>
-                <option class="text-[#080808] " value="Islami Bank">Islami Bank</option>
+                <option value="" disabled selected>Select Bank</option>
+                <option class="text-[#080808]" value="AB Bank">AB Bank</option>
+                <option class="text-[#080808]" value="IFIC Bank">
+                  IFIC Bank
+                </option>
+                <option class="text-[#080808]" value="Islami Bank">
+                  Islami Bank
+                </option>
               </select>
               <small
                 id="not-select-bank"
@@ -278,6 +282,79 @@
         </section>
       </section>
       <!-- ===== End: Cash Out Form ===== -->
+      <!-- ===== Start: Transfer Amount Form ===== -->
+      <section id="transfer-container" class="">
+        <h2 class="font-bold mb-4 text-[18px]">Transfer Money</h2>
+        <section class="bg-[#ffffff] rounded-3xl p-8">
+          <form id="transfer-amount-form">
+            <!-- User Account Number  -->
+            <div class="input-group flex flex-col mb-4">
+              <label
+                class="font-semibold text-[#080808] mb-3"
+                for="user-account-number"
+                >User Account Number</label
+              >
+
+              <input
+                autocomplete="off"
+                minlength="11"
+                maxlength="11"
+                type="text"
+                placeholder="Enter 11 digit number"
+                class="input w-full rounded-3xl text-[#080808] bg-[#F4F5F7] border-none focus:outline focus:outline-[#535353]"
+                id="user-account-number"
+              />
+              <small
+                id="user-wrong-num"
+                class="hidden text-red-600 font-medium"
+              ></small>
+            </div>
+            <!-- Transfer Amount  -->
+            <div class="input-group flex flex-col mb-4">
+              <label class="font-semibold text-[#080808] mb-3">Amount</label>
+
+              <input
+                autocomplete="off"
+                type="text"
+                placeholder="Enter Amount to Transfer"
+                class="input w-full rounded-3xl text-[#080808] bg-[#F4F5F7] border-none focus:outline focus:outline-[#535353]"
+                id="transfer-ammount"
+              />
+              <small
+                id="not-add-transfer"
+                class="hidden text-red-600 font-medium"
+              ></small>
+            </div>
+            <!-- 4 Digit PIn  -->
+            <div class="input-group flex flex-col mb-4">
+              <label class="font-semibold text-[#080808] mb-3" for="pin-number"
+                >Pin Number</label
+              >
+
+              <input
+                autocomplete="off"
+                type="text"
+                minlength="4"
+                maxlength="4"
+                placeholder="Enter 4 Digit Pin"
+                class="input w-full rounded-3xl text-[#080808] bg-[#F4F5F7] border-none focus:outline focus:outline-[#535353]"
+                id="transfer-pin"
+              />
+              <small
+                id="wrong-pin-transfer"
+                class="hidden text-red-600 font-medium"
+              ></small>
+            </div>
+            <button
+              id="transfer-money-btn"
+              class="btn btn-active btn-primary w-full rounded-3xl text-white bg-[#0874f2] border-none"
+            >
+              Send Now
+            </button>
+          </form>
+        </section>
+      </section>
+      <!-- ===== End: Transfer Form ===== -->
     </main>
     <!-- ===== End: All Forms Section ===== -->
     <script src="../js/features.js"></script>
