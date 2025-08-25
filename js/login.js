@@ -22,7 +22,7 @@ loginBtn.addEventListener("click", (evt) => {
   const userNumber = "01922333444";
   // Valid Account Number
   const isValidNumber = validNumber(mobileNum.value);
-  if (!isValidNumber) {
+  if (!isValidNumber || userNumber !== mobileNum.value) {
     wrongNum.textContent = "Invalid account number";
     wrongNum.style.display = "initial";
     return;
