@@ -342,3 +342,69 @@ document.querySelector("#pay-money-btn").addEventListener("click", (evt) => {
   document.querySelector("#pay-bill-form").reset();
   alert("Payment Successfull!");
 });
+
+//? Function to create Element
+function createElement(elem) {
+  return document.createElement(elem);
+}
+
+//? Function to create a transaction card
+function createCard(billName) {
+  const cardContainer = document.querySelector("#transaction-cards-container");
+  const cardDiv = createElement("div");
+  const leftDiv = createElement("div");
+  const rightDiv = createElement("div");
+  const icon = createElement("i");
+  const imgDiv = createElement("div");
+  const contentDiv = createElement("div");
+  const imgElem = createElement("img");
+  const h3 = createElement("h3");
+  const small = createElement("small");
+
+  // append childs to create card
+  imgElem.setAttribute("src", "../assets/wallet1.png");
+  imgDiv.appendChild(imgElem);
+
+  small.innerHTML = "Today <span>01.44</span> Am";
+  h3.textContent = billName;
+  contentDiv.appendChild(h3);
+  contentDiv.appendChild(small);
+
+  leftDiv.appendChild(imgDiv);
+  leftDiv.appendChild(contentDiv);
+  rightDiv.appendChild(icon);
+  cardDiv.appendChild(leftDiv);
+  cardDiv.appendChild(rightDiv);
+  cardContainer.appendChild(cardDiv);
+
+  //? add tailwind classes for design
+  cardDiv.classList.add(
+    "bg-white",
+    "px-4",
+    "py-3",
+    "cursor-pointer",
+    "border",
+    "border-[#0808081e]",
+    "rounded-xl",
+    "flex",
+    "justify-between",
+    "items-center"
+  );
+  leftDiv.classList.add("flex", "items-center", "gap-4");
+  imgDiv.classList.add(
+    "bg-[#f4f5f7]",
+    "p-3",
+    "inline-flex",
+    "items-center",
+    "justify-center",
+    "rounded-full"
+  );
+  contentDiv.classList.add("flex", "flex-col", "justify-center");
+  h3.classList.add("font-semibold", "text-[18px]");
+  small.classList.add("text-[14px]", "font-medium", "text-[#08080880]");
+  icon.classList.add("fa-solid", "fa-ellipsis-vertical", "text-2xl");
+}
+createCard("Bank Deposit");
+createCard("Internet Bill");
+createCard("Cash Out");
+createCard("Mobile Recharge");
