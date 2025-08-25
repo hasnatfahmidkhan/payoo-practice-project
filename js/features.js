@@ -13,6 +13,8 @@ const transactionsContainer = document.querySelector("#transactions-container");
 const transactionbtn = document.querySelector("#transaction-btn");
 const logOutBtn = document.querySelector("#logout-btn");
 const UserPin = 1111;
+// transaction card container
+const cardContainer = document.querySelector("#transaction-cards-container");
 
 // Get Element
 function getElement(id) {
@@ -83,6 +85,92 @@ transactionbtn.addEventListener("click", () => {
   hundleToggle(transactionsContainer);
 });
 
+//? Function to Get real Time and Date
+function getCurrentDateTime() {
+  const now = new Date();
+
+  // Format month name short (Aug, Sep, etc.)
+  const options = { month: "short", day: "numeric" };
+  const datePart = now.toLocaleDateString("en-US", options);
+
+  // Format time (12-hour with AM/PM)
+  let hours = now.getHours();
+  const minutes = now.getMinutes().toString().padStart(2, "0");
+  const ampm = hours >= 12 ? "PM" : "AM";
+  hours = hours % 12 || 12; // 0 -> 12
+
+  return `${datePart} ${hours}:${minutes} ${ampm}`;
+}
+
+//? Utility: create element with optional classes & content
+function createElement(tag, classes = [], content = "") {
+  const elem = document.createElement(tag);
+  if (classes.length) elem.classList.add(...classes);
+  if (content) elem.innerHTML = content;
+  return elem;
+}
+
+//? Function to create a transaction card
+function createCard({
+  billName,
+  time = "Today <span>01:44 AM</span>",
+  imgSrc = "../assets/wallet1.png",
+  iconClass = "fa-solid fa-ellipsis-vertical text-2xl",
+}) {
+  const cardDiv = createElement("div", [
+    "bg-white",
+    "px-4",
+    "py-3",
+    "cursor-pointer",
+    "border",
+    "border-[#0808081e]",
+    "rounded-xl",
+    "flex",
+    "justify-between",
+    "items-center",
+  ]);
+
+  // Left section (image + content)
+  const leftDiv = createElement("div", ["flex", "items-center", "gap-4"]);
+
+  const imgDiv = createElement("div", [
+    "bg-[#f4f5f7]",
+    "p-3",
+    "inline-flex",
+    "items-center",
+    "justify-center",
+    "rounded-full",
+  ]);
+  const imgElem = createElement("img");
+  imgElem.setAttribute("src", imgSrc);
+  imgDiv.appendChild(imgElem);
+
+  const contentDiv = createElement("div", [
+    "flex",
+    "flex-col",
+    "justify-center",
+  ]);
+  const h3 = createElement("h3", ["font-semibold"], billName);
+  const small = createElement(
+    "small",
+    ["text-[14px]", "font-medium", "text-[#08080880]"],
+    time
+  );
+
+  contentDiv.append(h3, small);
+  leftDiv.append(imgDiv, contentDiv);
+
+  // Right section (icon)
+  const rightDiv = createElement("div");
+  const icon = createElement("i", iconClass.split(" "));
+  rightDiv.appendChild(icon);
+
+  // Combine everything
+  cardDiv.append(leftDiv, rightDiv);
+
+  return cardDiv; // return card so caller decides where to append
+}
+
 //* Add Money Features *//
 document.querySelector("#add-money-btn").addEventListener("click", (evt) => {
   evt.preventDefault(); // stop reload after add money btn click
@@ -137,6 +225,15 @@ document.querySelector("#add-money-btn").addEventListener("click", (evt) => {
   // reset the form
   document.querySelector("#add-money-form").reset();
   alert("Add Amount Successfully");
+  const getDateTime = getCurrentDateTime();
+  // create transaction card
+  const addMoneyCard = createCard({
+    billName: `Bank Deposit From ${selectBanks}`,
+    time: `Today <span>${getDateTime}</span>`,
+  });
+
+  // Add transaction to transaction section
+  cardContainer.appendChild(addMoneyCard);
 });
 
 //* Cash Out Features *//
@@ -343,67 +440,6 @@ document.querySelector("#pay-money-btn").addEventListener("click", (evt) => {
   alert("Payment Successfull!");
 });
 
-//? Function to create Element
-function createElement(elem) {
-  return document.createElement(elem);
-}
-
-//? Function to create a transaction card
-function createCard(billName) {
-  const cardContainer = document.querySelector("#transaction-cards-container");
-  const cardDiv = createElement("div");
-  const leftDiv = createElement("div");
-  const rightDiv = createElement("div");
-  const icon = createElement("i");
-  const imgDiv = createElement("div");
-  const contentDiv = createElement("div");
-  const imgElem = createElement("img");
-  const h3 = createElement("h3");
-  const small = createElement("small");
-
-  // append childs to create card
-  imgElem.setAttribute("src", "../assets/wallet1.png");
-  imgDiv.appendChild(imgElem);
-
-  small.innerHTML = "Today <span>01.44</span> Am";
-  h3.textContent = billName;
-  contentDiv.appendChild(h3);
-  contentDiv.appendChild(small);
-
-  leftDiv.appendChild(imgDiv);
-  leftDiv.appendChild(contentDiv);
-  rightDiv.appendChild(icon);
-  cardDiv.appendChild(leftDiv);
-  cardDiv.appendChild(rightDiv);
-  cardContainer.appendChild(cardDiv);
-
-  //? add tailwind classes for design
-  cardDiv.classList.add(
-    "bg-white",
-    "px-4",
-    "py-3",
-    "cursor-pointer",
-    "border",
-    "border-[#0808081e]",
-    "rounded-xl",
-    "flex",
-    "justify-between",
-    "items-center"
-  );
-  leftDiv.classList.add("flex", "items-center", "gap-4");
-  imgDiv.classList.add(
-    "bg-[#f4f5f7]",
-    "p-3",
-    "inline-flex",
-    "items-center",
-    "justify-center",
-    "rounded-full"
-  );
-  contentDiv.classList.add("flex", "flex-col", "justify-center");
-  h3.classList.add("font-semibold", "text-[18px]");
-  small.classList.add("text-[14px]", "font-medium", "text-[#08080880]");
-  icon.classList.add("fa-solid", "fa-ellipsis-vertical", "text-2xl");
-}
 createCard("Bank Deposit");
 createCard("Internet Bill");
 createCard("Cash Out");
