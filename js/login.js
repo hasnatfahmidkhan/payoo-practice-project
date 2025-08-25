@@ -3,31 +3,38 @@ const pinNum = document.querySelector("#pin-number");
 const loginBtn = document.querySelector("#login-btn");
 const wrongNum = document.querySelector("#wrong-num");
 const wrongPin = document.querySelector("#wrong-pin");
+
+// Valid NUmber checker
+function validNumber(num) {
+  if (num.startsWith("01") && num.length === 11) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
 loginBtn.addEventListener("click", (evt) => {
   evt.preventDefault(); // stop form default bahiaviour
+
   wrongNum.textContent = "";
   wrongPin.textContent = "";
-
-  const numRegex = /^\d+$/;
-  const isValidNum = numRegex.test(Number(mobileNum.value));
-  const isValidPin = numRegex.test(Number(pinNum.value));
-  const userAccountNum = 11111111111;
-  const userPin = 1111;
-
-  const convertedMobileNum = Number(mobileNum.value);
-  const convertedPinNum = Number(pinNum.value);
-  if (convertedMobileNum === userAccountNum && convertedPinNum === userPin) {
-    window.open("pages/home.html", "_blank");
-    // window.location.href = "";
-    document.querySelector("form").reset();
-  }
-
-  if (convertedMobileNum !== userAccountNum) {
-    wrongNum.textContent = "Enter Wrong Number";
+  const userPin = "1111";
+  const userNumber = "0194444555";
+  // Valid Account Number
+  const isValidNumber = validNumber(mobileNum.value);
+  if (!isValidNumber && !userNumber) {
+    wrongNum.textContent = "Invalid account number";
     wrongNum.style.display = "initial";
+    return;
   }
-  if (convertedPinNum !== userPin) {
+
+  if (pinNum.value !== userPin) {
     wrongPin.textContent = "Enter wrong pin";
     wrongPin.style.display = "initial";
+  }
+
+  if (userNumber === mobileNum.value && pinNum.value === userPin) {
+    window.open("pages/home.html", "_blank");
+    document.querySelector("form").reset();
   }
 });
