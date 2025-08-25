@@ -55,34 +55,61 @@ logOutBtn.addEventListener("click", () => {
   window.location.href = "../index.html";
 });
 
+//* Function to set border and color
+function formBtnDesign(id) {
+  const forms = document.querySelectorAll(".form-btn");
+  forms.forEach((form) => {
+    form.classList.remove(
+      "border-[#0874f2]",
+      "bg-[#0874f20d]",
+      "text-[#0874f2]"
+    );
+    form.classList.add("text-[#080808b3]", "border-[#0808081a]");
+  });
+  id.classList.remove("text-[#080808b3]", "border-[#0808081a]");
+  id.classList.add("border-[#0874f2]", "bg-[#0874f20d]", "text-[#0874f2]");
+}
+
 // Add Money toogle Features
 addMoneyFormBtn.addEventListener("click", () => {
   hundleToggle(addMoneyForm);
+  // add design after click
+  formBtnDesign(addMoneyFormBtn);
 });
 
 // cash out toggle Features
 cashOutFormBtn.addEventListener("click", () => {
   hundleToggle(cashOutForm);
+  // add design after click
+  formBtnDesign(cashOutFormBtn);
 });
 
 // transfer toggle Features
 transferFormBtn.addEventListener("click", () => {
   hundleToggle(transferForm);
+  // add design after click
+  formBtnDesign(transferFormBtn);
 });
 
 // Get Bonus toggle Features
 bonusFormBtn.addEventListener("click", () => {
   hundleToggle(bonusForm);
+  // add design after click
+  formBtnDesign(bonusFormBtn);
 });
 
 // Pay Bill toggle Features
 payBillFormBtn.addEventListener("click", () => {
   hundleToggle(payBillForm);
+  // add design after click
+  formBtnDesign(payBillFormBtn);
 });
 
 // Transactions toggle Features
 transactionbtn.addEventListener("click", () => {
   hundleToggle(transactionsContainer);
+  // add design after click
+  formBtnDesign(transactionbtn);
 });
 
 //? Function to Get real Time and Date
@@ -174,6 +201,7 @@ function createCard({
 //* Add Money Features *//
 document.querySelector("#add-money-btn").addEventListener("click", (evt) => {
   evt.preventDefault(); // stop reload after add money btn click
+
   // Every click time empty the input field value
   const accountNotSelected = getElement("not-select-bank");
   accountNotSelected.textContent = "";
