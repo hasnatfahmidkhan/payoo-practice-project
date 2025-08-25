@@ -225,11 +225,12 @@ document.querySelector("#add-money-btn").addEventListener("click", (evt) => {
   // reset the form
   document.querySelector("#add-money-form").reset();
   alert("Add Amount Successfully");
-  const getDateTime = getCurrentDateTime();
+
   // create transaction card
+  const getDateTime = getCurrentDateTime(); // get current time date and time
   const addMoneyCard = createCard({
     billName: `Bank Deposit From ${selectBanks}`,
-    time: `Today <span>${getDateTime}</span>`,
+    time: `<span>${getDateTime}</span>`,
   });
 
   // Add transaction to transaction section
@@ -290,6 +291,16 @@ document
     // reset the form
     document.querySelector("#cashout-form").reset();
     alert("Cash Out Successfully");
+
+    // create transaction card
+    const getDateTime = getCurrentDateTime(); // get current time date and time
+    const cashOutCard = createCard({
+      billName: `Cash Out ${agentNumber}`,
+      time: `<span>${getDateTime}</span>`,
+    });
+
+    // Add transaction to transaction section
+    cardContainer.appendChild(cashOutCard);
   });
 
 //* Transfer Balance Features *//
@@ -348,6 +359,16 @@ document
     // reset the form
     document.querySelector("#transfer-amount-form").reset();
     alert("Transfer Successfully!");
+
+    // create transaction card
+    const getDateTime = getCurrentDateTime(); // get current time date and time
+    const transferCard = createCard({
+      billName: `Transfer Money to ${userNumber}`,
+      time: `<span>${getDateTime}</span>`,
+    });
+
+    // Add transaction to transaction section
+    cardContainer.appendChild(transferCard);
   });
 
 //* Get Bonus Features *//
@@ -374,6 +395,16 @@ document.querySelector("#bonus-btn").addEventListener("click", (evt) => {
   // reset the form
   document.querySelector("#bonus-form").reset();
   alert("Add Bonus Successfully!");
+
+  // create transaction card
+  const getDateTime = getCurrentDateTime(); // get current time date and time
+  const bonusCard = createCard({
+    billName: `Bonus Amount`,
+    time: `<span>${getDateTime}</span>`,
+  });
+
+  // Add transaction to transaction section
+  cardContainer.appendChild(bonusCard);
 });
 
 //* Pay Bill Features *//
@@ -438,6 +469,16 @@ document.querySelector("#pay-money-btn").addEventListener("click", (evt) => {
   // reset the form
   document.querySelector("#pay-bill-form").reset();
   alert("Payment Successfull!");
+
+  // create transaction card
+  const getDateTime = getCurrentDateTime(); // get current time date and time
+  const payBillCard = createCard({
+    billName: `${selectBills}`,
+    time: `<span>${getDateTime}</span>`,
+  });
+
+  // Add transaction to transaction section
+  cardContainer.appendChild(payBillCard);
 });
 
 createCard("Bank Deposit");
