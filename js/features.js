@@ -229,7 +229,7 @@ document.querySelector("#add-money-btn").addEventListener("click", (evt) => {
   // create transaction card
   const getDateTime = getCurrentDateTime(); // get current time date and time
   const addMoneyCard = createCard({
-    billName: `Bank Deposit From ${selectBanks}`,
+    billName: `Bank Deposit`,
     time: `<span>${getDateTime}</span>`,
   });
 
@@ -295,7 +295,7 @@ document
     // create transaction card
     const getDateTime = getCurrentDateTime(); // get current time date and time
     const cashOutCard = createCard({
-      billName: `Cash Out ${agentNumber}`,
+      billName: `Cash Out`,
       time: `<span>${getDateTime}</span>`,
     });
 
@@ -363,7 +363,7 @@ document
     // create transaction card
     const getDateTime = getCurrentDateTime(); // get current time date and time
     const transferCard = createCard({
-      billName: `Transfer Money to ${userNumber}`,
+      billName: `Transfer Money`,
       time: `<span>${getDateTime}</span>`,
     });
 
@@ -399,7 +399,7 @@ document.querySelector("#bonus-btn").addEventListener("click", (evt) => {
   // create transaction card
   const getDateTime = getCurrentDateTime(); // get current time date and time
   const bonusCard = createCard({
-    billName: `Bonus Amount`,
+    billName: `Coupon Bonus`,
     time: `<span>${getDateTime}</span>`,
   });
 
